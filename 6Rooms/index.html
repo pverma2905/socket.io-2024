@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Socket io real time application</h1>
+    <ul id="ul"></ul>
+    <form>
+        <input type="text" id="msgTo" size="70px">
+        <button onclick="sendMessage(event)">Send</button>
+    </form>
+    <script>
+       socket=io("/conn1");
+       socket.on("info", (data)=>{
+        console.log("rrrrrrrrr",data)
+            const li = document.createElement("li");
+            li.textContent = "Server Message: "+data;
+            ul.appendChild(li);
+            window.scroll(0,document.body.scrollHeight)
+       })
+        function sendMessage(e){
+            e.preventDefault()
+            const msgTo = document.getElementById("msgTo");
+            if(msgTo.value){
+                // socket.send(msgTo.value)
+                // socket.emit("chat", {message:msgTo.value});
+            }
+        }
+    </script>
+
+    <script>
+        
+    </script>
+</body>
+</html>
